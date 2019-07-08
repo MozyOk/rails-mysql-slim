@@ -1,0 +1,9 @@
+= form_for @revenue do |f|
+  - if @revenue.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@revenue.errors.count, "error")} prohibited this revenue from being saved:"
+      ul
+        - @revenue.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

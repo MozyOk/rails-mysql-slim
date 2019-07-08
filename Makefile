@@ -16,6 +16,12 @@ install:    ## copy env & ruby js install & create db
 #	docker-compose run --rm web yarn
 	docker-compose run --rm web bin/rails db:create
 
+.PHONY: reset-db
+reset-db:		## reset DB
+	docker-compose run --rm web bin/rails db:drop:all db:create:all RAILS_ENV=development
+	docker-compose run --rm web bin/rails db:migrate RAILS_ENV=development
+	docker-compose run --rm web bin/rails db:seed RAILS_ENV=development
+
 .PHONY: run
 run:    ## docker run
 	rm -rf tmp/pids/server.pid
