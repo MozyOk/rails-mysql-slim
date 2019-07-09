@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root to: "entries#index"
   resources :creators
   resources :revenues
-  # root to: "home#index"
   resources :entries
   devise_for :users
 end
